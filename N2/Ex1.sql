@@ -1,0 +1,3 @@
+CREATE SCHEMA IF NOT EXISTS `youtube`;
+USE `youtube`;
+CREATE TABLE IF NOT EXISTS `user`;
