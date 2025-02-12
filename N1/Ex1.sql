@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `culampolla`.`costumers` (
   `costumers_email` VARCHAR(45) NOT NULL,
   `costumers_tel` INT(11) NOT NULL,
   `costumers_timestamp` DATETIME NOT NULL,
-  `costumers_broughtby_costumers_id` INT(11) NOT NULL,
+  `costumers_broughtby_costumers_id` INT(11) NULL default null,
   PRIMARY KEY (`costumers_id`),
   INDEX `fk_costumers_costumers1_idx` (`costumers_broughtby_costumers_id` ASC),
   CONSTRAINT `fk_costumers_costumers1`
@@ -84,8 +84,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `culampolla`.`sales` (
   `sales_id` INT(11) NOT NULL AUTO_INCREMENT,
   `sales_timestamp` DATETIME NOT NULL,
-  `costumers_costumers_id` INT(11) NOT NULL,
-  `employees_employees_id` INT(11) NOT NULL,
+  `costumers_costumers_id` INT(11) NULL DEFAULT NULL,
+  `employees_employees_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`sales_id`),
   INDEX `fk_sales_costumers1_idx` (`costumers_costumers_id` ASC),
   INDEX `fk_sales_employees1_idx` (`employees_employees_id` ASC),

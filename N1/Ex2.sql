@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`costumers` (
   `costumers_zipcode` INT(6) NULL DEFAULT NULL,
   `localities_localities_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`costumers_id`),
-  INDEX `fk_costumers_localities1_idx` (`localities_localities_id` ASC) VISIBLE,
+  INDEX `fk_costumers_localities1_idx` (`localities_localities_id` ASC),
   CONSTRAINT `fk_costumers_localities1`
     FOREIGN KEY (`localities_localities_id`)
     REFERENCES `Pizzeria`.`localities` (`localities_id`)
@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`orders` (
   `employees_employees_id` INT(11) NULL DEFAULT NULL,
   `costumers_costumers_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`orders_id`),
-  INDEX `fk_orders_employees1_idx` (`employees_employees_id` ASC) VISIBLE,
-  INDEX `fk_orders_costumers1_idx` (`costumers_costumers_id` ASC) VISIBLE,
+  INDEX `fk_orders_employees1_idx` (`employees_employees_id` ASC),
+  INDEX `fk_orders_costumers1_idx` (`costumers_costumers_id` ASC),
   CONSTRAINT `fk_orders_employees1`
     FOREIGN KEY (`employees_employees_id`)
     REFERENCES `Pizzeria`.`employees` (`employees_id`)
@@ -60,8 +60,8 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`products` (
   `pizza_categories_pizza_categories_id` INT(11) NULL DEFAULT NULL,
   `orders_orders_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`products_id`),
-  INDEX `fk_products_pizza_categories1_idx` (`pizza_categories_pizza_categories_id` ASC) VISIBLE,
-  INDEX `fk_products_orders1_idx` (`orders_orders_id` ASC) VISIBLE,
+  INDEX `fk_products_pizza_categories1_idx` (`pizza_categories_pizza_categories_id` ASC),
+  INDEX `fk_products_orders1_idx` (`orders_orders_id` ASC),
   CONSTRAINT `fk_products_pizza_categories1`
     FOREIGN KEY (`pizza_categories_pizza_categories_id`)
     REFERENCES `Pizzeria`.`pizza_categories` (`pizza_categories_id`)
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`stores` (
   `stores_zipcode` VARCHAR(45) NULL DEFAULT NULL,
   `localities_localities_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`stores_id`),
-  INDEX `fk_stores_localities1_idx` (`localities_localities_id` ASC) VISIBLE,
+  INDEX `fk_stores_localities1_idx` (`localities_localities_id` ASC),
   CONSTRAINT `fk_stores_localities1`
     FOREIGN KEY (`localities_localities_id`)
     REFERENCES `Pizzeria`.`localities` (`localities_id`)
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`employees` (
   `employees_role` ENUM("Delivery", "Kitchen") NOT NULL,
   `stores_stores_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`employees_id`),
-  INDEX `fk_employees_stores1_idx` (`stores_stores_id` ASC) VISIBLE,
+  INDEX `fk_employees_stores1_idx` (`stores_stores_id` ASC),
   CONSTRAINT `fk_employees_stores1`
     FOREIGN KEY (`stores_stores_id`)
     REFERENCES `Pizzeria`.`stores` (`stores_id`)
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`localities` (
   `localities_name` VARCHAR(45) NOT NULL,
   `provinces_provinces_id` INT(11) NOT NULL,
   PRIMARY KEY (`localities_id`),
-  INDEX `fk_localities_provinces_idx` (`provinces_provinces_id` ASC) VISIBLE,
+  INDEX `fk_localities_provinces_idx` (`provinces_provinces_id` ASC),
   CONSTRAINT `fk_localities_provinces`
     FOREIGN KEY (`provinces_provinces_id`)
     REFERENCES `Pizzeria`.`provinces` (`provinces_id`)
